@@ -4,17 +4,68 @@ FUNCTION "curso_dyegros.db::teste"(
 )
     RETURNS TABLE
 (
-	EMPRESA		NVARCHAR(4),
-	VL_CRED		DECIMAL(25,6)
+	MANDT		 NVARCHAR(3),
+	NF_ID        NVARCHAR(10),
+	EMPRESA      NVARCHAR(10),
+	FILIAL       NVARCHAR(4),
+	COD_MOD      NVARCHAR(2),
+	TIPO_IMPOSTO NVARCHAR(4),
+	VALOR_IMP    DECIMAL(25,6)
 )
        LANGUAGE SQLSCRIPT 
        SQL SECURITY INVOKER AS 
 BEGIN 
-    RESULTADO = 
-    	select EMPRESA, SUM(VL_DC) as VL_CRED 
-    	from "wrapper::LANCAMENTO_CONTABIL"
-    	where VL_DC> 0 AND MANDT = :P_MANDT AND EXERCICIO = :P_YEAR
-    	group by EMPRESA, EXERCICIO;
-    	
-    RETURN select * from :RESULTADO;
+    J_ERP = SELECT
+    			d.MANDT,
+		    	d.DOCNUM,
+		    	d.BUKRS,
+		    	d.BRANCH,
+		    	d.MODEL,
+		    	d.DOCTYP,
+		    	i.ITMNUM,
+		    	i.TAXTYP,
+		    	i.TAXVAL
+            FROM "wrapper::J_1BNFDOC" as d 
+            	JOIN "wrapper::J_1BNFSTX" as i 
+            ON d.MANDT=i.MANDT and d.DOCNUM=i.DOCNUM;
+            
+    P_ERP2 = SELECT
+    			*
+             FROM :J_ERP e
+    		 WHERE not exists (SELECT 1 from "wrapper::/TMF/D_NF_DOC" as s WHERE e.MANDT=s.MANDT and e.DOCNUM=s.NF_ID) 
+    			and e.DOCTYP <> '5';
+    			
+    P_ERP3 = SELECT 
+    			e.MANDT,
+		    	e.DOCNUM,
+		    	e.BUKRS,
+		    	e.BRANCH,
+		    	e.MODEL,
+		    	e.TAXTYP,
+		    	e.TAXVAL
+    		 FROM :P_ERP2 as e 
+    		 WHERE not exists (
+    		 	SELECT 1 from "wrapper::/TMF/D_NF_IMPOST" s 
+    			WHERE 
+    				e.MANDT=s.MANDT 
+    				and e.DOCNUM=s.NF_ID
+    				and e.ITMNUM=s.NUM_ITEM
+    				and e.TAXTYP=s.SYS_IMPOSTO
+    		 	
+    		 );
+    		 
+    P_PURE_ERP = SELECT 
+    				e.MANDT,
+					e.DOCNUM as NF_ID,
+					e.BUKRS as EMPRESA,
+					e.BRANCH as FILIAL,
+					e.MODEL as COD_MOD,
+					j.TAXTYP as TIPO_IMPOSTO,
+					e.TAXVAL as VALOR_IMP
+    			 FROM :P_ERP3 as e JOIN "wrapper::J_1BAJ" as j
+    			 ON e.MANDT=j.MANDT 
+    				and e.TAXTYP = j.TAXTYP;
+
+    RETURN SELECT *
+    from :P_PURE_ERP;
 END

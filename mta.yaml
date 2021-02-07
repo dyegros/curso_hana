@@ -15,6 +15,12 @@ modules:
       properties:
         key: DATASOURCE_TDF
         service: '~{DATASOURCE_TDF}'
+    - name: TAX4B_DATASOURCE_TDF
+      group: SERVICE_REPLACEMENTS
+      properties:
+        key: TAX4B_DATASOURCE_TDF
+        service: '~{TAX4B_DATASOURCE_TDF}'
+
 
 resources:
  - name: hdi_db
@@ -25,4 +31,7 @@ resources:
    properties:
      DATASOURCE_TDF: DATASOURCE_TDF
    type: org.cloudfoundry.existing-service
-
+ - name: TAX4B_DATASOURCE_TDF
+   properties:
+     TAX4B_DATASOURCE_TDF: TAX4B_DATASOURCE_TDF
+   type: org.cloudfoundry.existing-service

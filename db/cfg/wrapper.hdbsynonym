@@ -1,3 +1,8 @@
 {
-	"wrapper::LANCAMENTO_CONTABIL": {}
+	"wrapper::LANCAMENTO_CONTABIL": {},
+	"wrapper::/TMF/D_NF_DOC": {},
+    "wrapper::/TMF/D_NF_IMPOST": {},
+    "wrapper::J_1BNFDOC": {},
+    "wrapper::J_1BNFSTX": {},
+    "wrapper::J_1BAJ": {}
 }

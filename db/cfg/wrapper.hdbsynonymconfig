@@ -4,5 +4,35 @@
       "object": "sap.glo.tmflocbr.ctr/LANCAMENTO_CONTABIL",
       "schema": "_SYS_BIC"
     }
+  },
+  "wrapper::/TMF/D_NF_DOC": {
+  	"target": {
+  		"object": "/TMF/D_NF_DOC",
+  		"*.configure": "TAX4B_DATASOURCE_TDF"
+  	}
+  },
+  "wrapper::/TMF/D_NF_IMPOST": {
+  	"target": {
+  		"object": "/TMF/D_NF_IMPOST",
+  		"*.configure": "TAX4B_DATASOURCE_TDF"
+  	}
+  },
+  "wrapper::J_1BNFDOC": {
+  	"target": {
+  		"object": "J_1BNFDOC",
+  		"*.configure": "DATASOURCE_TDF"
+  	}
+  },
+  "wrapper::J_1BNFSTX": {
+  	"target": {
+  		"object": "J_1BNFSTX",
+  		"*.configure": "DATASOURCE_TDF"
+  	}
+  },
+  "wrapper::J_1BAJ": {
+  	"target": {
+  		"object": "J_1BAJ",
+  		"*.configure": "DATASOURCE_TDF"
+  	}
   }
 }
