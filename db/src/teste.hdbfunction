@@ -1,0 +1,20 @@
+FUNCTION "curso_dyegros.db::teste"( 
+	P_MANDT			NVARCHAR(3),
+	P_YEAR			NVARCHAR(4)
+)
+    RETURNS TABLE
+(
+	EMPRESA		NVARCHAR(4),
+	VL_CRED		DECIMAL(25,6)
+)
+       LANGUAGE SQLSCRIPT 
+       SQL SECURITY INVOKER AS 
+BEGIN 
+    RESULTADO = 
+    	select EMPRESA, SUM(VL_DC) as VL_CRED 
+    	from "wrapper::LANCAMENTO_CONTABIL"
+    	where VL_DC> 0 AND MANDT = :P_MANDT AND EXERCICIO = :P_YEAR
+    	group by EMPRESA, EXERCICIO;
+    	
+    RETURN select * from :RESULTADO;
+END
