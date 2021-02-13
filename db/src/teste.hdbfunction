@@ -65,7 +65,7 @@ BEGIN
     			 FROM :P_ERP3 as e JOIN "wrapper::J_1BAJ" as j
     			 ON e.MANDT=j.MANDT 
     				and e.TAXTYP = j.TAXTYP;
-
+    				
     RETURN SELECT *
     from :P_PURE_ERP;
 END

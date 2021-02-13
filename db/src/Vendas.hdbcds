@@ -1,0 +1,10 @@
+namespace curso_dyegros.db;
+
+context Vendas {
+};
+
+/*@@layout{"layoutInfo":{"x":-113,"y":88.5}}*/
+entity Clientes {
+    key codigo : Integer;
+        nome   : String(30);
+};

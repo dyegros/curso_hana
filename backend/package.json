@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+  	"express": "4.17.1",
+  	"body-parser": "1.19.0"
+  },
+  "description": "Backend",
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0"
+  },
+  "files": [],
+  "main": "server.js",
+  "name": "backend",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest --config jest.json",
+    "test-coverage": "node node_modules/jest/bin/jest --coverage --config jest.json",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "version": "1.0.0"
+}
