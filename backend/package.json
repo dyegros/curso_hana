@@ -1,8 +1,12 @@
 {
   "dependencies": {
   	"express": "4.17.1",
-  	"body-parser": "1.19.0"
+  	"body-parser": "1.19.0",
+  	"@sap/xsenv": "^2",
+    "@sap/xsjs": "^6",
+    "@sap/hdbext": ""
   },
+  
   "description": "Backend",
   "devDependencies": {
     "jest": "^23.6.0",

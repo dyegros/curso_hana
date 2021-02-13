@@ -21,14 +21,22 @@ modules:
         key: TAX4B_DATASOURCE_TDF
         service: '~{TAX4B_DATASOURCE_TDF}'
 
- 
-
-
  - name: backend
    type: nodejs
    path: backend
+   requires:
+    - name: db
    provides:
     - name: backend_api
+      properties:
+         url: ${default-url}
+
+
+ - name: dummy
+   type: nodejs
+   path: dummy
+   provides:
+    - name: dummy_api
       properties:
          url: ${default-url}
 
