@@ -1,0 +1,14 @@
+{
+	"welcomeFile": "webapp/index.html",
+	"authenticationMethod": "none",
+	"routes": [
+		{
+			"source": "/backend/(.*)",
+			"destination": "backend_api"
+		},
+		{
+			"source": "/odata/(.*)",
+			"destination": "odata_api"
+		}
+	]
+}
