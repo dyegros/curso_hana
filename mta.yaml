@@ -1,55 +1,47 @@
 ID: curso_dyegros
 _schema-version: '2.1'
 version: 0.0.1
-
 modules:
- - name: db
-   type: hdb
-   path: db
-   requires:
-    - name: hdi_db
-      properties:
-        TARGET_CONTAINER: ~{hdi-container-name}
-    - name: DATASOURCE_TDF
-      group: SERVICE_REPLACEMENTS
-      properties:
-        key: DATASOURCE_TDF
-        service: '~{DATASOURCE_TDF}'
-    - name: TAX4B_DATASOURCE_TDF
-      group: SERVICE_REPLACEMENTS
-      properties:
-        key: TAX4B_DATASOURCE_TDF
-        service: '~{TAX4B_DATASOURCE_TDF}'
-
- - name: backend
-   type: nodejs
-   path: backend
-   requires:
-    - name: db
-   provides:
-    - name: backend_api
-      properties:
-         url: ${default-url}
-
-
- - name: dummy
-   type: nodejs
-   path: dummy
-   provides:
-    - name: dummy_api
-      properties:
-         url: ${default-url}
-
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: DATASOURCE_TDF
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: DATASOURCE_TDF
+          service: '~{DATASOURCE_TDF}'
+      - name: TAX4B_DATASOURCE_TDF
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: TAX4B_DATASOURCE_TDF
+          service: '~{TAX4B_DATASOURCE_TDF}'
+    provides:
+      - name: curso-db
+  - name: backend
+    type: nodejs
+    path: backend
+    requires:
+      - name: db
+      - name: hdi_db
+    provides:
+      - name: backend_api
+        properties:
+          url: '${default-url}'
+  
 resources:
- - name: hdi_db
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
- - name: DATASOURCE_TDF
-   properties:
-     DATASOURCE_TDF: DATASOURCE_TDF
-   type: org.cloudfoundry.existing-service
- - name: TAX4B_DATASOURCE_TDF
-   properties:
-     TAX4B_DATASOURCE_TDF: TAX4B_DATASOURCE_TDF
-   type: org.cloudfoundry.existing-service
+  - name: hdi_db
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: DATASOURCE_TDF
+    properties:
+      DATASOURCE_TDF: DATASOURCE_TDF
+    type: org.cloudfoundry.existing-service
+  - name: TAX4B_DATASOURCE_TDF
+    properties:
+      TAX4B_DATASOURCE_TDF: TAX4B_DATASOURCE_TDF
+    type: org.cloudfoundry.existing-service

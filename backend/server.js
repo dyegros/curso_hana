@@ -6,8 +6,6 @@ const clientes = require("./clientes");
 
 const bodyParser = require('body-parser');
 
-
-
 const app = express();
 var port = process.env.PORT || 3000;
 
