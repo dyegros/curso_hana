@@ -12,6 +12,15 @@
 		"sourceTemplate": {
 			"id": "hanatemplates.basicSAPUI5ApplicationProject",
 			"version": "0.0.0"
+		},
+		"dataSources": {
+			"vendasService": {
+				"uri": "/odata/Vendas.xsodata",
+				"type": "OData",
+				"setting": {
+					"odataVersion": "2.0"
+				}
+			}
 		}
 	},
 
@@ -63,6 +72,15 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "curso.ui.i18n.i18n"
+				}
+			},
+			"vendasModel": {
+				"dataSource": "vendasService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true,
+				"settings": {
+					"useBatch": false,
+					"json": true
 				}
 			}
 		},

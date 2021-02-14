@@ -46,15 +46,12 @@ modules:
     path: ui
     requires:
       - name: odata_api
-        properties:
-          name: odata_api
-          url: '~{url} '
         group: destinations
-      - name: backend_api
         properties:
-          name: backend_api
-          url: '~{url} '
-        group: destinations
+          name: odataApi
+          url: '~{url}'
+          forwardAuthToken: true
+
 resources:
   - name: hdi_db
     properties:

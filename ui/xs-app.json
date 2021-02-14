@@ -3,12 +3,9 @@
 	"authenticationMethod": "none",
 	"routes": [
 		{
-			"source": "/backend/(.*)",
-			"destination": "backend_api"
-		},
-		{
 			"source": "/odata/(.*)",
-			"destination": "odata_api"
+			"target": "$1",
+			"destination": "odataApi"
 		}
 	]
 }

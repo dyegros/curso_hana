@@ -1,9 +1,22 @@
-<mvc:View controllerName="curso.ui.controller.Clientes" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="curso.ui.controller.Clientes" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<smartTable:SmartTable
+							id="clTable"
+							header="Clientes"
+							editable="false"
+							showRowCount="true"
+							enableAutoBinding="true"
+							tableType="Table"
+						>
+							<smartTable:layoutData>
+								<FlexItemData growFactor="1" baseSize="0%"/>
+							</smartTable:layoutData>
+						</smartTable:SmartTable>
+					</content>
 				</Page>
 			</pages>
 		</App>
