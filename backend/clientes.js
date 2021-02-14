@@ -35,6 +35,11 @@ appClientes.post("/", (req, res) => {
 	});
 });
 
+appClientes.post("/notas-com-cst-incorreto-de-transferencia/:mandt/:empresa/:periodo/corrigir", (req, res) => {
+	
+	
+});
+
 appClientes.put("/:codigo", (req, res) => {
 	var codigo = req.params.codigo;
 	var clienteAlterado = req.body;

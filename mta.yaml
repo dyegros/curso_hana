@@ -31,7 +31,16 @@ modules:
       - name: backend_api
         properties:
           url: '${default-url}'
-  
+  - name: odata
+    type: nodejs
+    path: odata
+    provides:
+      - name: odata_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: db
 resources:
   - name: hdi_db
     properties:

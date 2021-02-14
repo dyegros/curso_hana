@@ -5,6 +5,7 @@ context Vendas {
 	entity Clientes {
 	    key codigo : Integer;
 	        nome   : String(30);
+	        ativo  : String(1);
 	};
 };
 
