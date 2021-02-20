@@ -1,3 +1,9 @@
 service {
 	"curso_dyegros.db::Vendas.Clientes" as "ClientesSet";
+	
+	"curso_dyegros.db::Vendas.Produtos" as "ProdutosSet";
+	
+	"curso_dyegros.db::CV_IMPOSTO" as "Impostos"
+	keys("MANDT","EMPRESA","FILIAL","MODELO","IMPOSTO")
+	parameters via entity "ImpostosParams";
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="curso_dyegros.db::CV_IMPOSTO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_IMPOSTO"/>
+<localVariables>
+  <variable id="P_MANDT" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="3" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="P_YEAR" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="4" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="curso_dyegros.db::teste">
+    <targetVariable name="P_MANDT" resourceUri="curso_dyegros.db::teste"/>
+    <localVariable>P_MANDT</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="curso_dyegros.db::teste">
+    <targetVariable name="P_YEAR" resourceUri="curso_dyegros.db::teste"/>
+    <localVariable>P_YEAR</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="curso_dyegros.db::teste" type="TABLE_FUNCTION">
+    <resourceUri>curso_dyegros.db::teste</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="curso_dyegros.db::teste">
+  <attributes>
+    <attribute id="MODELO" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_MOD"/>
+      <keyMapping columnObjectName="teste" columnName="COD_MOD"/>
+    </attribute>
+    <attribute id="IMPOSTO" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO_IMPOSTO"/>
+      <keyMapping columnObjectName="teste" columnName="TIPO_IMPOSTO"/>
+    </attribute>
+    <attribute id="FILIAL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILIAL"/>
+      <keyMapping columnObjectName="teste" columnName="FILIAL"/>
+    </attribute>
+    <attribute id="EMPRESA" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPRESA"/>
+      <keyMapping columnObjectName="teste" columnName="EMPRESA"/>
+    </attribute>
+    <attribute id="MANDT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="teste" columnName="MANDT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="VALOR_IMP" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="VALOR_IMP"/>
+      <measureMapping columnObjectName="teste" columnName="VALOR_IMP"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

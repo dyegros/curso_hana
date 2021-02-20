@@ -1,0 +1,21 @@
+<mvc:View controllerName="curso.ui.controller.Impostos" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout">
+	<l:VerticalLayout width="100%">
+		<fb:FilterBar id="filterBar"
+		                reset="onReset" search="onSearch" showFilterConfiguration="False"
+		                filtersDialogClosed = "onFiltersDialogClosed">
+			<fb:filterGroupItems>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="MANDT" label="Mandante" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<Input type="Text" change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="YEAR" label="Ano" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<Input type="Text" change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+			</fb:filterGroupItems>				
+    	</fb:FilterBar>	
+		<VBox fitContainer="true" id="content_vbox" />
+	</l:VerticalLayout>
+</mvc:View>

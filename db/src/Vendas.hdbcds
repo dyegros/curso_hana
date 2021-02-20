@@ -7,5 +7,11 @@ context Vendas {
 	        nome   : String(30);
 	        ativo  : String(1);
 	};
+	
+	entity Produtos {
+		key codigo : Integer;
+		    descricao : String(50);
+	}
+	
 };
 
