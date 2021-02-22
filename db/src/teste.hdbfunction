@@ -27,7 +27,7 @@ BEGIN
 		    	i.TAXVAL
             FROM "wrapper::J_1BNFDOC" as d 
             	JOIN "wrapper::J_1BNFSTX" as i 
-            ON d.MANDT=i.MANDT and d.DOCNUM=i.DOCNUM;
+            ON d.MANDT=i.MANDT and d.DOCNUM=i.DOCNUM and d.MANDT = :P_MANDT and substring(d.DOCDAT,1,4) = :P_YEAR;
             
     P_ERP2 = SELECT
     			*
