@@ -5,23 +5,35 @@ sap.ui.define([
 
 	return Controller.extend("curso.ui.controller.Impostos", {
 		onSearch: function (oEvent) {
-			
 			var path =
-                    '/ImpostosParams(P_MANDT=\'' +
-                    oEvent.MANDT +
-                    '\',P_EMPRESA=\'' +
-                    oEvent.YEAR + '\')/Results';
-                
-			var oTable = new sap.ui.comp.smarttable.SmartTable("clTable", {header: "Produtos", editable: false, showRowCount: true, enableAutoBiding: true, tableType: 'Table'});
-			var vendasModel = this.getOwnerComponent().getModel("vendasModel");
-			
-			oTable.setModel(vendasModel);
-			oTable.tableBindingPath=path;
-			this.byId("content_vbox").addItem(oTable);
+                    "/ImpostosParams(P_MANDT=\'" +
+                    oEvent.mParameters.selectionSet[0].getValue() +
+                    "',P_YEAR='" +
+                    oEvent.mParameters.selectionSet[1].getValue() + "')/Results";
+            
+			var oTable = this.byId("clTable");
+	
+			oTable.setTableBindingPath(path);
+			oTable.rebindTable();
 		},
 
 		onInit: function () {
 			this.getView().addStyleClass("sapUiSizeCompact"); // make everything inside this View appear in Compact mode
+			var vendasModel = this.getOwnerComponent().getModel("vendasModel");
+			var oTable = this.byId("clTable");
+
+			function loadMetadata() {
+				var oMeta = vendasModel.getServiceMetadata();
+				var headerFields = "";
+				for (var i = 0; i < oMeta.dataServices.schema[0].entityType[2].property.length; i++) {
+					var property = oMeta.dataServices.schema[0].entityType[2].property[i];
+					headerFields += property.name + ",";
+				}
+				oTable.setInitiallyVisibleFields(headerFields);
+				oTable.setModel(vendasModel);
+			}
+			vendasModel.attachMetadataLoaded(vendasModel, loadMetadata);
+			vendasModel.getMetaModel();
 		},
 		
 		/**

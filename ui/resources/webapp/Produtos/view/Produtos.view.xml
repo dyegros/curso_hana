@@ -11,6 +11,7 @@
 							showRowCount="true"
 							enableAutoBinding="true"
 							tableType="Table"
+							entitySet="ImpostosSet"
 						>
 							<smartTable:layoutData>
 								<FlexItemData growFactor="1" baseSize="0%"/>

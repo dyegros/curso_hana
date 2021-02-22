@@ -16,6 +16,20 @@
 				</fb:FilterGroupItem>
 			</fb:filterGroupItems>				
     	</fb:FilterBar>	
-		<VBox fitContainer="true" id="content_vbox" />
+		<VBox fitContainer="true" id="content_vbox">
+			<smartTable:SmartTable
+							id="clTable"
+							header="Impostos"
+							showRowCount="true"
+							enableAutoBinding="true"
+							tableType="Table"
+							entitySet="Impostos"
+							tableBindingPath="/ImpostosParams(P_MANDT='',P_YEAR='')/Results"
+						>
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+			</smartTable:SmartTable>
+		</VBox>
 	</l:VerticalLayout>
 </mvc:View>
