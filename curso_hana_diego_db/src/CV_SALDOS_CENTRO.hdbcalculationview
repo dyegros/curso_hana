@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="curso_hana_diego.curso_hana_diego_db::CV_SALDOS_CENTRO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_SALDOS_CENTRO"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tdf::LANCAMENTO_CONTABIL">
+    <resourceUri>tdf::LANCAMENTO_CONTABIL</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="COD_CTA"/>
+      <viewAttribute id="COD_CCUS"/>
+      <viewAttribute id="MONTANTE"/>
+      <viewAttribute id="VL_DC"/>
+      <viewAttribute id="EXERCICIO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tdf::LANCAMENTO_CONTABIL"/>
+    <filter>&quot;EXERCICIO&quot; = 2018</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="COD_CCUS" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_CCUS"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COD_CCUS"/>
+    </attribute>
+    <attribute id="COD_CTA" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_CTA"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COD_CTA"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="MONTANTE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MONTANTE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="MONTANTE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario> 

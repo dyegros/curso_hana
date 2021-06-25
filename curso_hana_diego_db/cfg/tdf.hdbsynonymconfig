@@ -1,0 +1,8 @@
+{
+    "tdf::LANCAMENTO_CONTABIL": {
+        "target": {
+            "object": "sap.glo.tmflocbr.ctr/LANCAMENTO_CONTABIL",
+            "schema": "_SYS_BIC"
+        }
+    }
+}
