@@ -1,0 +1,3 @@
+service {
+    "curso_hana_diego.curso_hana_diego_db::CV_SALDOS_CENTRO" as "SaldosSet" keys ("COD_CUS", "COD_CTA");
+}
