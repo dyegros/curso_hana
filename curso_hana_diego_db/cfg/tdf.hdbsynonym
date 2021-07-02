@@ -1,3 +1,4 @@
 {
-    "tdf::LANCAMENTO_CONTABIL": {}
+    "tdf::LANCAMENTO_CONTABIL": {},
+    "tdf::NF_DOCUMENTO": {}
 }

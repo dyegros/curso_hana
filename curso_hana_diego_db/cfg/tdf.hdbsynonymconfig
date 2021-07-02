@@ -4,5 +4,11 @@
             "object": "sap.glo.tmflocbr.ctr/LANCAMENTO_CONTABIL",
             "schema": "_SYS_BIC"
         }
+    },
+    "tdf::NF_DOCUMENTO": {
+        "target": {
+            "object": "sap.glo.tmflocbr.ctr/NF_DOCUMENTO",
+            "schema": "_SYS_BIC"
+        }
     }
 }

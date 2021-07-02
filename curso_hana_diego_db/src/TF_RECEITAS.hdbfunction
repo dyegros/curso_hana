@@ -1,0 +1,15 @@
+FUNCTION "curso_hana_diego.curso_hana_diego_db::TF_RECEITAS.hdbtablefunction"()
+       RETURNS TABLE
+       (
+           MANDT   NVARCHAR(3),
+           EMPRESA NVARCHAR(10),
+           FILIAL  NVARCHAR(10),
+           ANO     NVARCHAR(4),
+           MES     NVARCHAR(2),
+           VALOR   DECIMAL(25,6)
+       )
+       LANGUAGE SQLSCRIPT 
+       SQL SECURITY INVOKER AS 
+BEGIN 
+    V_NOTAS = SELECT MANDT, EMPRESA, FILIAL, DT_E_S, VL_TOTAL_DOCUMENTO FROM "tdf::NF_DOCUMENTO";
+END;
