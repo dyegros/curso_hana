@@ -1,11 +1,9 @@
 {
 	"welcomeFile": "webapp/index.html",
 	"authenticationMethod": "none",
-	"routes": [
-	    {
-	        "source": "/backend/(.*)",
-			"target": "$1",
-			"destination": "backendApi"
-	    }
-	]
+	"routes": [{
+	    "source": "/backend/(.*)",
+	    "target": "$1",
+	    "destination": "backendApi"
+	}]
 }
