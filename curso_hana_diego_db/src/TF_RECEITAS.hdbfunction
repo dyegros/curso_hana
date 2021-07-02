@@ -1,15 +1,29 @@
-FUNCTION "curso_hana_diego.curso_hana_diego_db::TF_RECEITAS.hdbtablefunction"()
-       RETURNS TABLE
-       (
+FUNCTION "curso_hana_diego.curso_hana_diego_db::TF_RECEITAS"()
+        RETURNS TABLE
+        (
            MANDT   NVARCHAR(3),
            EMPRESA NVARCHAR(10),
            FILIAL  NVARCHAR(10),
            ANO     NVARCHAR(4),
            MES     NVARCHAR(2),
            VALOR   DECIMAL(25,6)
-       )
-       LANGUAGE SQLSCRIPT 
-       SQL SECURITY INVOKER AS 
+        )
+        LANGUAGE SQLSCRIPT 
+        SQL SECURITY INVOKER AS 
 BEGIN 
-    V_NOTAS = SELECT MANDT, EMPRESA, FILIAL, DT_E_S, VL_TOTAL_DOCUMENTO FROM "tdf::NF_DOCUMENTO";
+    -- Ler os dados do documento fiscal
+    -- Filtrar 
+    -- Agrupar estes dados filtrando apenas receitas e totalizando por empresa,filial, ano, mes e valor
+    -- Retornar tabela com os dados filtrados e sumarizados
+    
+    V_NOTAS = SELECT MANDT, EMPRESA, FILIAL, DT_E_S, VL_TOTAL_DOCUMENTO, DIRECT FROM "tdf::NF_DOCUMENTO";
+    
+    V_RECEITAS = SELECT * FROM :V_NOTAS WHERE DIRECT = '1';
+    
+    V_AGGR = SELECT MANDT, EMPRESA, FILIAL, 
+                    SUBSTRING(DT_E_S,1,4) as ANO, SUBSTRING(DT_E_S,5,2) as MES, SUM(VL_TOTAL_DOCUMENTO) as VALOR
+                    FROM :V_RECEITAS
+                    GROUP BY MANDT, EMPRESA, FILIAL, SUBSTRING(DT_E_S,1,4), SUBSTRING(DT_E_S,5,2);
+                    
+    RETURN SELECT * FROM :V_AGGR;
 END;

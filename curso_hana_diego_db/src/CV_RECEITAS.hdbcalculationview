@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="curso_hana_diego.curso_hana_diego_db::CV_RECEITAS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_RECEITAS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="curso_hana_diego.curso_hana_diego_db::TF_RECEITAS" type="TABLE_FUNCTION">
+    <resourceUri>curso_hana_diego.curso_hana_diego_db::TF_RECEITAS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="curso_hana_diego.curso_hana_diego_db::TF_RECEITAS">
+  <attributes>
+    <attribute id="MES" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MES"/>
+      <keyMapping columnObjectName="TF_RECEITAS" columnName="MES"/>
+    </attribute>
+    <attribute id="MANDT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="TF_RECEITAS" columnName="MANDT"/>
+    </attribute>
+    <attribute id="EMPRESA" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPRESA"/>
+      <keyMapping columnObjectName="TF_RECEITAS" columnName="EMPRESA"/>
+    </attribute>
+    <attribute id="FILIAL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILIAL"/>
+      <keyMapping columnObjectName="TF_RECEITAS" columnName="FILIAL"/>
+    </attribute>
+    <attribute id="ANO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANO"/>
+      <keyMapping columnObjectName="TF_RECEITAS" columnName="ANO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="VALOR" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="VALOR"/>
+      <measureMapping columnObjectName="TF_RECEITAS" columnName="VALOR"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

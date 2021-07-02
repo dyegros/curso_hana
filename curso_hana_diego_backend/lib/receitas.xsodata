@@ -1,0 +1,3 @@
+service {
+     "curso_hana_diego.curso_hana_diego_db::CV_RECEITAS" as "ReceitasSet" keys ("MANDT","EMPRESA","FILIAL","ANO","MES");
+}
