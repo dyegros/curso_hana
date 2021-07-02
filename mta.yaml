@@ -22,6 +22,18 @@ modules:
     requires:
       - name: curso_hana_diego_db
       - name: hdi_curso_hana_diego_db
+
+  - name: curso_hana_diego_ui
+    type: html5
+    path: curso_hana_diego_ui
+    requires:
+      - name: curso_hana_diego_backend_api
+        group: destinations
+        properties:
+            name: backendApi
+            url: '~{url}'
+            forwardAuthToken: true
+
 resources:
   - name: hdi_curso_hana_diego_db
     properties:
