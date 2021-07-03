@@ -1,7 +1,7 @@
 {
 	"_version": "1.5.0",
 	"sap.app": {
-		"id": "curso_hana_ui.curso_hana_diego_ui",
+		"id": "curso_hana_diego_ui.curso_hana_diego_ui",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -12,15 +12,6 @@
 		"sourceTemplate": {
 			"id": "hanatemplates.basicSAPUI5ApplicationProject",
 			"version": "0.0.0"
-		},
-		"dataSources": {
-			"vendasService": {
-				"uri": "/backend/Receitas.xsodata",
-				"type": "OData",
-				"setting": {
-					"odataVersion": "2.0"
-				}
-			}
 		}
 	},
 
@@ -47,7 +38,7 @@
 
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "curso_hana_ui.curso_hana_diego_ui.view.Home",
+			"viewName": "curso_hana_diego_ui.curso_hana_diego_ui.view.View1",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -71,16 +62,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "curso_hana_ui.curso_hana_diego_ui.i18n.i18n"
-				}
-			},
-			"receitasModel": {
-				"dataSource": "receitasService",
-				"type": "sap.ui.model.odata.v2.ODataModel",
-				"preload": true,
-				"settings": {
-					"useBatch": false,
-					"json": true
+					"bundleName": "curso_hana_diego_ui.curso_hana_diego_ui.i18n.i18n"
 				}
 			}
 		},
@@ -94,21 +76,21 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "curso_hana_ui.curso_hana_diego_ui.view",
+				"viewPath": "curso_hana_diego_ui.curso_hana_diego_ui.view",
 				"controlAggregation": "pages",
 				"controlId": "idAppControl"
 			},
 			"routes": [{
-				"name": "Receitas",
-				"pattern": "Receitas",
-				"target": ["TargetReceitas"]
+				"name": "RouteView1",
+				"pattern": "RouteView1",
+				"target": ["TargetView1"]
 			}],
 			"targets": {
-				"TargetReceitas": {
+				"TargetView1": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearAggregation": true,
-					"viewName": "Receitas"
+					"viewName": "View1"
 				}
 			}
 		}

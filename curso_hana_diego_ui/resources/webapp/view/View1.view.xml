@@ -1,4 +1,5 @@
-<mvc:View controllerName="curso_hana_ui.curso_hana_diego_ui.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="curso_hana_diego_ui.curso_hana_diego_ui.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
 	<Shell id="shell">
 		<App id="app">
 			<pages>

@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"curso_hana_ui/curso_hana_diego_ui/model/models"
+	"curso_hana_diego_ui/curso_hana_diego_ui/model/models"
 ], function (UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("curso_hana_ui.curso_hana_diego_ui.Component", {
+	return UIComponent.extend("curso_hana_diego_ui.curso_hana_diego_ui.Component", {
 
 		metadata: {
 			manifest: "json"
