@@ -1,12 +1,30 @@
-<mvc:View controllerName="curso_hana_diego_ui.curso_hana_diego_ui.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content></content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+<mvc:View controllerName="curso_hana_diego_ui.curso_hana_diego_ui.controller.View1" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                        <VBox fitContainer="true" id="content_vbox">
+                            <smartTable:SmartTable
+                                id="stReceitas"
+                                header="Receitas"
+                                showRowCount="true"
+                                enableAutoBinding="true"
+                                tableType="Table"
+                                tableBindingPath="/ReceitasSet/Results">
+                                <smartTable:layoutData>
+                                    <FlexItemData growFactor="1" baseSize="0%"/>
+                                </smartTable:layoutData>
+                            </smartTable:SmartTable>
+                        </VBox>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>

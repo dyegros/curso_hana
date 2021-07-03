@@ -12,6 +12,15 @@
 		"sourceTemplate": {
 			"id": "hanatemplates.basicSAPUI5ApplicationProject",
 			"version": "0.0.0"
+		},
+		"dataSources": {
+		    "receitasService": {
+		        "uri": "/backend/receitas.xsodata",
+		        "type": "OData",
+		        "setting": {
+		            "odataVersion": "2.0"
+		        }
+		    }
 		}
 	},
 
@@ -64,6 +73,15 @@
 				"settings": {
 					"bundleName": "curso_hana_diego_ui.curso_hana_diego_ui.i18n.i18n"
 				}
+			},
+			"receitasModel": {
+			    "dataSource": "receitasService",
+			    "type": "sap.ui.model.odata.v2.ODataModel",
+			    "preload": true,
+			    "settings": {
+			        "useBatch": false,
+			        "json": true
+			    }
 			}
 		},
 		"resources": {
